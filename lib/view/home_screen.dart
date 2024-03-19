@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:resume_builder/app_config/app_color_config.dart';
+import 'package:resume_builder/view/resume_view/resume_view.dart';
 
 import '../controller/profile_controler.dart';
 import 'CreateResume/resume_maker.dart';
@@ -59,6 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               for (var i =0;i<resumeController.resumeList.length;i++)
                 ListTile(
+                  onTap: (){
+                    Get.to(ResumeViewScreen(resume: resumeController.resumeList[i],));
+                  },
                    key: Key(i.toString()),
                   leading: CircleAvatar(
                     backgroundImage: FileImage(File(resumeController.resumeList[i].imagePath!)),
